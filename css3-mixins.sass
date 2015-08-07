@@ -162,6 +162,10 @@
 @mixin transform-style($style: preserve-3d)
   @include css3-prefix('transform-style', $style)
 
+// PERSPECTIVE
+@mixin perspective($perspective)
+  @include css3-prefix('perspective', $perspective)
+
 // TRANSITION
 @mixin transition($properties...)
   @if length($properties) >= 1

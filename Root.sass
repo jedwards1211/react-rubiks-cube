@@ -1,0 +1,76 @@
+@import css3-mixins
+
+.root
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  text-align: center
+  overflow: hidden
+
+  .headers
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    z-index: 100
+    pointer-events: none
+    background: rgba(255,255,255,0.5)
+    -webkit-text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 5px white
+    text-shadow: 0 0 5px white, 0 0 5px white, 0 0 5px white, 0 0 5px white
+    @include transition(opacity linear 1s, background linear 1s)
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    -webkit-box-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    -webkit-box-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    > *
+      max-width: 600px
+      margin: 0 auto
+
+    &.hidden
+      opacity: 0
+
+  .viewport
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    display: inline-block
+    @include perspective(1000px)
+
+    .rotator
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+
+      display: -webkit-box;
+      display: -moz-box;
+      display: -webkit-flex;
+      display: flex;
+
+      -webkit-box-justify-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+
+      -webkit-box-align-items: center;
+      -webkit-align-items: center;
+      align-items: center;

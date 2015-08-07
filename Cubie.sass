@@ -10,7 +10,7 @@
     height: 100%
     box-sizing: border-box
     padding: 5%
-    transform-style: preserve-3d
+    @include transform-style(preserve-3d)
     background-color: black
 
     > .sticker
@@ -18,32 +18,45 @@
       height: 100%
       @include transition(background-color linear 0.1s)
 
-  > .top > .sticker
-    background-color: white
-  > .top > .sticker:hover
-    background-color: darken(white, 20%)
+      &.white
+        background-color: white
+        &:hover
+          background-color: darken(white, 20%)
 
-  > .bottom > .sticker
-    background-color: #ee0
-  > .bottom:hover > .sticker
-    background-color: lighten(#ee0, 20%)
+      &.yellow
+        background-color: #ee0
+        &:hover
+          background-color: lighten(#ee0, 20%)
 
-  > .left > .sticker
-    background-color: #e00
-  > .left:hover > .sticker
-    background-color: lighten(#e00, 20%)
+      &.red
+        background-color: #e00
+        &:hover
+          background-color: lighten(#e00, 20%)
 
-  > .right > .sticker
-    background-color: #e70
-  > .right:hover > .sticker
-    background-color: lighten(#e70, 20%)
+      &.orange
+        background-color: #e70
+        &:hover
+          background-color: lighten(#e70, 20%)
 
-  > .back > .sticker
-    background-color: #0d0
-  > .back:hover > .sticker
-    background-color: lighten(#0d0, 10%)
+      &.green
+        background-color: #0c0
+        &:hover
+          background-color: lighten(#0c0, 10%)
 
-  > .front > .sticker
-    background-color: #00e
-  > .front:hover > .sticker
-    background-color: lighten(#00e, 20%)
+      &.blue
+        background-color: #00e
+        &:hover
+          background-color: lighten(#00e, 20%)
+
+      &.gray
+        background-color: #ccc
+        &:hover
+          background-color: darken(#ccc, 20%)
+
+      &.translucent
+        opacity: 0.3
+
+.react-rubiks-cube.translucent > .cubie > *,
+.react-rubiks-cube > .cubie.translucent > *,
+.react-rubiks-cube > .cubie > *.translucent
+  background-color: rgba(192, 192, 192, 0.5)

@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 
+import prefix from './prefix';
+
 import * as matrix from './matrix';
 
 function round(a) {
@@ -22,10 +24,12 @@ export default React.createClass({
   },
   rotateQueue: [],
   onStickerClick(e, cubie, sideVector) {
+    e.preventDefault();
+
     if (!this.props.onRotateCubies) return;
 
     if (this.interval) {
-      this.rotateQueue.push([e, cubie, sideVector]);
+      this.rotateQueue.push([_.cloneDeep(e), cubie, sideVector]);
       return;
     }
 
@@ -71,9 +75,9 @@ export default React.createClass({
       if (cubie.key in cubies) {
         cubie = cubies[cubie.key];
         var newMatrix = matrix.mmulRotation(rotation, cubie.props.matrix);
-        var newStyle = _.assign(cubie.props.style, {
+        var newStyle = _.assign(cubie.props.style, prefix({
           transform: `matrix3d(${newMatrix.join(',')})`
-        });
+        }));
         return React.cloneElement(cubie, {matrix: newMatrix, style: newStyle});
       }
       return cubie;
@@ -93,20 +97,23 @@ export default React.createClass({
     }
   },
   render() {
-    var {metrics, children, style, ...props} = this.props;
+    var {metrics, children, style, className, ...props} = this.props;
     var {cubieSize, spacing, size} = metrics;
 
     children = React.Children.map(children, child => React.cloneElement(child, {onStickerClick: this.onStickerClick}));
 
     var totalSize = size * cubieSize + spacing * (size - 1);
 
-    var style = _.assign({}, style, {
+    var style = _.assign({}, style, prefix({
       width: totalSize,
       height: totalSize,
       transformStyle: 'preserve-3d',
-    });
+    }));
 
-    return <div className="react-rubiks-cube" style={style} {...props}>
+    if (className) className += ' react-rubiks-cube';
+    else className = 'react-rubiks-cube';
+
+    return <div className={className} style={style} {...props}>
       {children}
     </div>
   }
