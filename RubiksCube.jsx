@@ -48,7 +48,7 @@ export default React.createClass({
       }  
     });
 
-    var angle = e.button === 0 ? Math.PI * 0.5 : -Math.PI * 0.5;
+    var angle = e.button === 0 ? -Math.PI * 0.5 : Math.PI * 0.5;
     angle *= actualSide[rotateAxis];
 
     this.targetMatrix = matrix.rot[rotateAxis](angle);
