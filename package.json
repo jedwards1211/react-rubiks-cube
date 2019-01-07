@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/jedwards1211/react-rubiks-cube",
   "dependencies": {
-    "lodash": "^3.10.0",
+    "lodash": "^4.17.11",
     "node-sass": "^3.2.0",
     "react": "^0.13.3",
     "react-vendor-prefix": "0.0.1",
